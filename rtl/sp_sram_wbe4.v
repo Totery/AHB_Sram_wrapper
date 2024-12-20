@@ -1,20 +1,21 @@
 module sp_sram_wbe4 #(
 	parameter MEM_DEPTH  = 1024,
 	parameter DATA_WIDTH = 32,
-	parameter ADDR_WIDTH = 10
+	parameter ADDR_BITS = 10
 ) (
 	input clk_i,
 	input rst_n_i,
 	input en_i,
 	input we_i,
 	input [3:0] wbe_i,
-	input [ADDR_WIDTH-1:0] addr_i,
+	input [ADDR_BITS-1:0] addr_i,
 	input [DATA_WIDTH-1:0] wdata_i,
 	
 	output reg [DATA_WIDTH-1:0] rdata_o
 );
 
 // Note: in this file we use register file to mimic sram
+// mem_r: 1024 words
 	reg [DATA_WIDTH-1:0] mem_r [0:MEM_DEPTH-1];
 
 // Sram cannot be initialized by rst_n

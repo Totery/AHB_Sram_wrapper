@@ -21,7 +21,7 @@ module ahb_inf #(
 	input [DATA_WIDTH-1:0] hwdata_i,
 	
 	// AHB Decoder to slave	(addr phase)
-	input 			hsel_i
+	input 			hsel_i,
 	
 	// AHB Bus Mux to slave (data phase)
 	input  			hready_i,
@@ -72,11 +72,35 @@ module ahb_inf #(
 		else mem_addr_o = haddr_i[2+:ADDR_BITS];									 // otherwise directly pass haddr_i
 	end
 	
-	// hstrb_i should be delayed for 1 cycle
-	// and pass to mem_wbe_o
+	// mem_wbe_o is decided by 2 factors: hstrb_i and hsize_i, 
+	// if hsize_i = 3'b000 --> write in byte --> in which byte depends on haddr_i[1:0]
+	// if hsize_i = 3'b001 --> write in half-word --> in which byte depends on haddr_i[1]
+	// the result of hstrb_i and hsize_i should be delayed for 1 cycle and pass to mem_wbe_o
 	always @(posedge hclk_i or negedge hrst_n_i) begin
 		if (~hrst_n_i)	mem_wbe_o <= 'b0;
-		else 						mem_wbe_o <= hstrb_i;
+		else begin 
+		
+			case (hsize_i) 
+				3'b000: begin		// size is byte, little endian
+					
+					case (haddr_i[1:0])
+						2'b00:	mem_wbe_o <= hstrb_i & 4'b0001;		
+						2'b01:	mem_wbe_o <= hstrb_i & 4'b0010;	 
+						2'b10:	mem_wbe_o <= hstrb_i & 4'b0100;
+						2'b11:	mem_wbe_o <= hstrb_i & 4'b1000;
+					endcase
+				end
+				
+				3'b001: begin	 // size is half-word, little endian
+						if (~haddr_i[1])	mem_wbe_o <= hstrb_i & 4'b0011;
+						else							mem_wbe_o <= hstrb_i & 4'b1100;
+				end
+				
+				default:		mem_wbe_o <= hstrb_i; 
+				
+			endcase
+			
+		end
 	end	
 
 	// mem_en_o 
@@ -92,11 +116,17 @@ module ahb_inf #(
 		else 						hsel_r <= hsel_i;
 	end		
 	
+	reg [1:0] htrans_r;
+	always @(posedge hclk_i or negedge hrst_n_i) begin
+		if (~hrst_n_i)	htrans_r <= 2'b0;
+		else 						htrans_r <= htrans_i;
+	end	
+	
 	always @(*) begin
-		if (hwrite_r)	 			mem_en_o = hsel_r;	// consequtive write
+		if (hwrite_r)	 			mem_en_o = hsel_r & (htrans_r != 2'b00) & (htrans_r != 2'b01);	// consequtive write and addr htrans is not IDLE/BUSY
 		else if (hwrite_2r)	mem_en_o = 1'b1;		// write switch to read
 		else if (hwrite_i)	mem_en_o = 1'b0;    // read switch to write
-		else 								mem_en_o = hsel_i;	// consequtive read
+		else 								mem_en_o = hsel_i & (htrans_i != 2'b00) & (htrans_i != 2'b01);	// consequtive read and addr htrans is not IDLE/BUSY
 	end
 
 	// mem_we_o

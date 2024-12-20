@@ -1,0 +1,36 @@
+C:/Users/86189/Desktop/IC/Bus/AHB/rtl/ahb_sram_wrapper.v {1 {vlog -work work -vopt -stats=none C:/Users/86189/Desktop/IC/Bus/AHB/rtl/ahb_sram_wrapper.v
+Model Technology ModelSim SE-64 vlog 10.4c Compiler 2015.07 Jul 20 2015
+-- Compiling module ahb_sram_wrapper
+
+Top level modules:
+	ahb_sram_wrapper
+
+} {} {}} C:/Users/86189/Desktop/IC/Bus/AHB/sim/tb.v {1 {vlog -work work -vopt -stats=none C:/Users/86189/Desktop/IC/Bus/AHB/sim/tb.v
+Model Technology ModelSim SE-64 vlog 10.4c Compiler 2015.07 Jul 20 2015
+-- Compiling module tb
+
+Top level modules:
+	tb
+
+} {} {}} C:/Users/86189/Desktop/IC/Bus/AHB/rtl/sp_sram_wbe4.v {1 {vlog -work work -vopt -stats=none C:/Users/86189/Desktop/IC/Bus/AHB/rtl/sp_sram_wbe4.v
+Model Technology ModelSim SE-64 vlog 10.4c Compiler 2015.07 Jul 20 2015
+-- Compiling module sp_sram_wbe4
+
+Top level modules:
+	sp_sram_wbe4
+
+} {} {}} C:/Users/86189/Desktop/IC/Bus/AHB/sim/ahb_lite_ms_model.v {1 {vlog -work work -vopt -stats=none C:/Users/86189/Desktop/IC/Bus/AHB/sim/ahb_lite_ms_model.v
+Model Technology ModelSim SE-64 vlog 10.4c Compiler 2015.07 Jul 20 2015
+-- Compiling module ahb_lite_ms_model
+
+Top level modules:
+	ahb_lite_ms_model
+
+} {} {}} C:/Users/86189/Desktop/IC/Bus/AHB/rtl/ahb_inf.v {1 {vlog -work work -vopt -stats=none C:/Users/86189/Desktop/IC/Bus/AHB/rtl/ahb_inf.v
+Model Technology ModelSim SE-64 vlog 10.4c Compiler 2015.07 Jul 20 2015
+-- Compiling module ahb_inf
+
+Top level modules:
+	ahb_inf
+
+} {} {}}

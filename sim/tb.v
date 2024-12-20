@@ -34,9 +34,8 @@ reg             clk, rstn   ;
 always #(clk_cyc/2.0) clk = ~clk;
 
 initial begin
-	clk = 0; rstn = 1;
-	repeat(10) @(posedge clk); rstn = 0;
-	repeat(10) @(posedge clk); rstn = 1;
+	clk = 0; rstn = 0;
+	@(negedge clk); rstn = 1;
 end
 
 
@@ -52,47 +51,53 @@ wire	[mem_dw-1:0]hwdata;
 wire			hready	;
 wire			hreadyout;
 wire	[31:0]	hrdata	;
-wire	[1:0]   hresp	;
+wire	hresp	;
 
 
 
-ahb_lite_ms_model #(.mem_depth(mem_depth), .mem_abit(mem_abit)) u_ahb_ms_model(
-	//--- AHB inf
-	.hsel		    (hsel		    ),
-	.haddr		    (haddr		    ),
-	.hburst	        (hburst	        ),
-	.htrans	        (htrans	        ),
-	.hsize		    (hsize		    ),
-	.hprot		    (hprot		    ),
-	.hwrite	        (hwrite	        ),
-	.hwdata	        (hwdata	        ),
-	.hready	        (hready	        ),
-	.hreadyout	    (hreadyout	    ),
-	.hrdata	        (hrdata	        ),
-	.hresp		    (hresp		    ),
+ahb_lite_ms_model #(.mem_depth(mem_depth), .mem_abit(mem_abit),
+	.mem_dw(mem_dw)) u_ahb_ms_model(
+
+	.hsel		    (hsel		  ),
+	.haddr		  (haddr		),
+	.hburst	    (hburst	  ),
+	.htrans	    (htrans	  ),
+	.hsize		  (hsize		),
+	.hprot		  (hprot		),
+	.hwrite	    (hwrite	  ),
+	.hwdata	    (hwdata	  ),
+	.hready	    (hready	  ),
+	.hreadyout	(hreadyout),
+	.hrdata	    (hrdata	  ),
+	.hresp		  (hresp		),
                                     
-    .clk			(clk			),
-    .rstn			(rstn			)  
+  .clk			  (clk			),
+  .rstn			  (rstn			)  
 );
 
 
-ahb_sram #(.mem_depth(mem_depth), .mem_abit(mem_abit)) u_ahb_sram(
-	//--- AHB slave inf
-	.hsel		    (hsel		    ),
-	.haddr		    (haddr		    ),
-	.hburst	        (hburst	        ),
-	.htrans	        (htrans	        ),
-	.hsize		    (hsize		    ),
-	.hprot		    (hprot		    ),
-	.hwrite	        (hwrite	        ),
-	.hwdata	        (hwdata	        ),
-	.hready	        (hready	        ),
-	.hreadyout	    (hreadyout	    ),
-	.hrdata	        (hrdata	        ),
-	.hresp		    (hresp		    ),
+ahb_sram_wrapper #(.MEM_DEPTH (mem_depth), .ADDR_BITS (mem_abit), 
+	.DATA_WIDTH(mem_dw)) u_ahb_sram(
+
+. hburst_i				(hburst),
+. hmasterlock_i		(1'b0),
+. hprot_i					(hprot),
+. hsize_i				  (hsize),
+. htrans_i				(htrans),
+. hwrite_i        (hwrite	),
+. hstrb_i					(4'b1111),
+. haddr_i					(haddr),
+. hwdata_i				(hwdata),
+. hsel_i					(hsel),
+. hready_i				(hready),
+
+
+. hreadyout_o	    (hreadyout),
+. hrdata_o	      (hrdata),
+. hresp_o		      (hresp),
                                     
-    .clk            (clk            ),
-    .rstn           (rstn           )   
+. hclk_i          (clk ),
+. hrst_n_i        (rstn)   
 );
 
 

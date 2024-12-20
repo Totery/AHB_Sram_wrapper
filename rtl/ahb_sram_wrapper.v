@@ -43,7 +43,7 @@ module ahb_sram_wrapper #(
 			.hclk_i			        (hclk_i),
 			.hrst_n_i		        (hrst_n_i),
 			.hburst_i						(hburst_i),
-			.hmasterlock_i			(hburst_i),
+			.hmasterlock_i			(hmasterlock_i),
 			.hprot_i						(hprot_i),
 			.hsize_i						(hsize_i),
 			.htrans_i						(htrans_i),
@@ -67,7 +67,7 @@ module ahb_sram_wrapper #(
 			.mem_rdata_i				(mem_rdata_s)
 		);
 
-	sp_sram_wbe4 #(.MEM_DEPTH(MEM_DEPTH), .DATA_WIDTH(DATA_WIDTH), .ADDR_BITS(ADDR_BITS))
+	sp_sram_wbe4 #(.MEM_DEPTH (MEM_DEPTH), .DATA_WIDTH (DATA_WIDTH), .ADDR_BITS(ADDR_BITS))
 		u_sram (
 		  .clk_i							(hclk_i),
 		  .rst_n_i						(hrst_n_i),

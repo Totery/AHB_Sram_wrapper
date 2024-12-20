@@ -1,0 +1,127 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/86189/Desktop/IC/Bus/APB/work
+T_opt
+!s110 1734540464
+VV^;]FZF8NY2TSfa2i;[PX1
+04 16 4 work ahb_sram_wrapper fast 0
+=1-802bf9a64bfb-6762fcb0-17a-4ef0
+Z1 o-quiet -auto_acc_if_foreign -work work +acc
+n@_opt
+Z2 OL;O;10.4c;61
+R0
+T_opt1
+!s110 1734652559
+VnGM=[<Jm3UQZcP7?@dejQ0
+04 2 4 work tb fast 0
+=2-802bf9a64bfb-6764b28f-274-10bc
+R1
+n@_opt1
+R2
+vahb_inf
+!s110 1734650581
+!i10b 1
+!s100 Pkl8Z;VSdRmQ4m[nieh3z0
+II>Aca?>XcH`c?><?_4g=k2
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+Z4 dC:/Users/86189/Desktop/IC/Bus/AHB/work
+w1734650571
+8C:/Users/86189/Desktop/IC/Bus/AHB/rtl/ahb_inf.v
+FC:/Users/86189/Desktop/IC/Bus/AHB/rtl/ahb_inf.v
+L0 1
+Z5 OL;L;10.4c;61
+r1
+!s85 0
+31
+!s108 1734650581.000000
+!s107 C:/Users/86189/Desktop/IC/Bus/AHB/rtl/ahb_inf.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/86189/Desktop/IC/Bus/AHB/rtl/ahb_inf.v|
+!i113 0
+Z6 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+vahb_lite_ms_model
+!s110 1734652554
+!i10b 1
+!s100 fYQA@c9f5oLfdk0h`j?bZ2
+IYR4ZkKLHM?YSeCYUH]n]?0
+R3
+R4
+w1734652540
+8C:/Users/86189/Desktop/IC/Bus/AHB/sim/ahb_lite_ms_model.v
+FC:/Users/86189/Desktop/IC/Bus/AHB/sim/ahb_lite_ms_model.v
+L0 18
+R5
+r1
+!s85 0
+31
+!s108 1734652554.000000
+!s107 C:/Users/86189/Desktop/IC/Bus/AHB/sim/ahb_lite_ms_model.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/86189/Desktop/IC/Bus/AHB/sim/ahb_lite_ms_model.v|
+!i113 0
+R6
+vahb_sram_wrapper
+Z7 !s110 1734559797
+!i10b 1
+!s100 F<G=DZ98WH;80X3l?b7`E2
+IbTMH7gWjhEB2FnI^1:0B:1
+R3
+R4
+w1734544308
+8C:/Users/86189/Desktop/IC/Bus/AHB/rtl/ahb_sram_wrapper.v
+FC:/Users/86189/Desktop/IC/Bus/AHB/rtl/ahb_sram_wrapper.v
+L0 1
+R5
+r1
+!s85 0
+31
+Z8 !s108 1734559797.000000
+!s107 C:/Users/86189/Desktop/IC/Bus/AHB/rtl/ahb_sram_wrapper.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/86189/Desktop/IC/Bus/AHB/rtl/ahb_sram_wrapper.v|
+!i113 0
+R6
+vsp_sram_wbe4
+R7
+!i10b 1
+!s100 E4U4Mo7;kkH4bgY<3@`H50
+IR@8=bKO6B7DAJg=e@4lKQ0
+R3
+R4
+w1734540249
+8C:/Users/86189/Desktop/IC/Bus/AHB/rtl/sp_sram_wbe4.v
+FC:/Users/86189/Desktop/IC/Bus/AHB/rtl/sp_sram_wbe4.v
+L0 1
+R5
+r1
+!s85 0
+31
+R8
+!s107 C:/Users/86189/Desktop/IC/Bus/AHB/rtl/sp_sram_wbe4.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/86189/Desktop/IC/Bus/AHB/rtl/sp_sram_wbe4.v|
+!i113 0
+R6
+vtb
+!s110 1734651492
+!i10b 1
+!s100 @ZVJD@2JCmHOXkVGom;[52
+I4PEni]4eBLLeiif_B^LzB3
+R3
+R4
+w1734651411
+8C:/Users/86189/Desktop/IC/Bus/AHB/sim/tb.v
+FC:/Users/86189/Desktop/IC/Bus/AHB/sim/tb.v
+L0 24
+R5
+r1
+!s85 0
+31
+!s108 1734651492.000000
+!s107 C:/Users/86189/Desktop/IC/Bus/AHB/sim/tb.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/86189/Desktop/IC/Bus/AHB/sim/tb.v|
+!i113 0
+R6
